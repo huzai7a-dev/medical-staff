@@ -13,7 +13,8 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { CONTACT_NUMBER, CONTACT_EMAIL } from "@/lib/constants";
+import { CONTACT_NUMBER, CONTACT_EMAIL, ESTABLISHED_IN } from "@/lib/constants";
+import aboutBg from "@/assets/about.jpg";
 
 const values = [
   {
@@ -65,8 +66,16 @@ const About = () => {
       <Navigation />
 
       {/* Hero Section */}
-      <section className="pt-32 pb-16 bg-gradient-hero relative overflow-hidden">
-        <div className="absolute inset-0 bg-primary/10" />
+      <section className="pt-40 pb-32 md:pt-48 md:pb-40 lg:pt-56 lg:pb-48 bg-gradient-hero relative overflow-hidden min-h-[70vh] flex items-center">
+        <div className="absolute inset-0">
+          <img
+            src={aboutBg}
+            alt="About Care Apex background"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-hero opacity-80" />
+          <div className="absolute inset-0 bg-primary/20" />
+        </div>
         <div className="container px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
             <div className="inline-block mb-4 px-4 py-2 bg-white/90 backdrop-blur-sm rounded-full">
@@ -101,7 +110,7 @@ const About = () => {
                 needs, prioritising safety and continuity of care.
               </p>
               <p className="text-lg leading-relaxed">
-                As a growing team established in 2021, we emphasise practical
+                As a growing team established in {ESTABLISHED_IN}, we emphasise practical
                 processes: thorough checks, responsive scheduling and regular
                 communication. Our objective is to be a dependable staffing
                 partner that supports local services efficiently.
@@ -242,7 +251,7 @@ const About = () => {
                 <Button
                   size="lg"
                   variant="outline"
-                  className="px-6 text-white border-white/30 hover:bg-white/10 hover:text-white"
+                  className="px-6 text-primary border-white/30 hover:bg-white/10 hover:text-white"
                 >
                   <Phone className="mr-2" /> {CONTACT_NUMBER}
                 </Button>

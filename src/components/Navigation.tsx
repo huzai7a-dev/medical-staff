@@ -21,6 +21,8 @@ export const Navigation = () => {
     { name: "Home", path: "/" },
     { name: "Services", path: "/services" },
     { name: "About", path: "/about" },
+    { name: "Mission & Vision", path: "/mission-and-vision" },
+    { name: "Careers", path: "/careers" },
     // { name: "Contact", path: "/contact" },
   ];
 
@@ -28,11 +30,7 @@ export const Navigation = () => {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? "bg-white/95 backdrop-blur-lg shadow-smooth"
-          : "bg-transparent"
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white/95 backdrop-blur-lg shadow-smooth`}
     >
       <div className="container px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
@@ -45,26 +43,17 @@ export const Navigation = () => {
               <Link
                 key={item.name}
                 to={item.path}
-                className={`font-medium transition-colors hover:text-primary ${
-                  isActive(item.path)
-                    ? isScrolled
-                      ? "text-primary"
-                      : "text-white/70"
-                    : isScrolled
-                    ? "text-foreground"
-                    : "text-white"
-                }`}
+                className={`font-medium transition-colors hover:text-primary  ${!isActive(item.path)
+                    ? "text-primary"
+                    : "text-black"
+                  }`}
               >
                 {item.name}
               </Link>
             ))}
             <Link to="/contact">
               <Button
-                className={`${
-                  isScrolled
-                    ? "bg-gradient-primary text-white"
-                    : "bg-white text-primary hover:bg-white/90"
-                }`}
+                className={`bg-gradient-primary text-white`}
               >
                 Get in Touch
               </Button>
@@ -73,9 +62,7 @@ export const Navigation = () => {
 
           {/* Mobile Menu Button */}
           <button
-            className={`md:hidden p-2 ${
-              isScrolled ? "text-foreground" : "text-white"
-            }`}
+            className={`md:hidden p-2 text-foreground`}
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -90,11 +77,10 @@ export const Navigation = () => {
                 <Link
                   key={item.name}
                   to={item.path}
-                  className={`px-4 py-2 font-medium ${
-                    isActive(item.path)
+                  className={`px-4 py-2 font-medium ${isActive(item.path)
                       ? "text-primary"
                       : "text-foreground hover:text-primary"
-                  }`}
+                    }`}
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {item.name}

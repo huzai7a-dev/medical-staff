@@ -1,6 +1,5 @@
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
-import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import {
   Stethoscope,
@@ -14,11 +13,20 @@ import {
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { CONTACT_NUMBER } from "@/lib/constants";
+import servicesBg from "@/assets/services/services-bg.jpg";
+import healthcareAssistantsImg from "@/assets/services/healthcare-assistants.jpg";
+import seniorHealthcareAssistantImg from "@/assets/services/senior-healthcare-assistant.jpg";
+import supportWorkersImg from "@/assets/services/support-worker.jpg";
+import registeredNursesImg from "@/assets/services/nurses.jpg";
+import emergencyCoverImage from '@/assets/services/emergency.jpg';
+import hourlyHomeCareImg from "@/assets/services/hourly-care.jpg";
+import specializedCareImg from "@/assets/services/specialized.jpg";
 
 const services = [
   {
     icon: Heart,
     title: "Healthcare Assistants",
+    image: healthcareAssistantsImg,
     shortDesc:
       "Compassionate and trained healthcare assistants ready to provide quality care and support to patients in hospitals, care homes, and private settings.",
     fullDesc:
@@ -36,6 +44,7 @@ const services = [
   {
     icon: Heart,
     title: "Senior Healthcare Assistants",
+    image: seniorHealthcareAssistantImg,
     shortDesc:
       "Experienced senior healthcare assistants skilled in managing patient care and supervising junior staff.",
     fullDesc:
@@ -53,6 +62,7 @@ const services = [
   {
     icon: Users,
     title: "Support Workers",
+    image: supportWorkersImg,
     shortDesc:
       "Dedicated support workers offering personalized care and assistance.",
     fullDesc:
@@ -70,6 +80,7 @@ const services = [
   {
     icon: Stethoscope,
     title: "Registered Nurses",
+    image: registeredNursesImg,
     shortDesc:
       "Highly qualified registered nurses with extensive experience in various healthcare settings, available for short or long-term placements.",
     fullDesc:
@@ -87,6 +98,7 @@ const services = [
   {
     icon: Clock,
     title: "24/7 Emergency Cover",
+    image: emergencyCoverImage,
     shortDesc:
       "Round-the-clock availability for emergency staffing requirements. We respond quickly to ensure continuity of care in critical situations.",
     fullDesc:
@@ -104,6 +116,7 @@ const services = [
   {
     icon: Shield,
     title: "Temporary & Permanent",
+    image: hourlyHomeCareImg,
     shortDesc:
       "Flexible staffing solutions including temporary cover, temp-to-perm placements, and permanent recruitment to meet your specific needs.",
     fullDesc:
@@ -121,6 +134,7 @@ const services = [
   {
     icon: Award,
     title: "Specialized Care",
+    image: specializedCareImg,
     shortDesc:
       "Specialist healthcare professionals for dementia care, palliative care, mental health support, and other specialised medical requirements.",
     fullDesc:
@@ -143,8 +157,16 @@ const Services = () => {
       <Navigation />
 
       {/* Hero Section */}
-      <section className="pt-32 pb-16 bg-gradient-hero relative overflow-hidden">
-        <div className="absolute inset-0 bg-primary/10" />
+      <section className="pt-40 pb-32 md:pt-48 md:pb-40 lg:pt-56 lg:pb-48 bg-gradient-hero relative overflow-hidden min-h-[70vh] flex items-center">
+        <div className="absolute inset-0">
+          <img
+            src={servicesBg}
+            alt="Healthcare services background"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-hero opacity-80" />
+          <div className="absolute inset-0 bg-primary/20" />
+        </div>
         <div className="container px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
             <div className="inline-block mb-4 px-4 py-2 bg-white/90 backdrop-blur-sm rounded-full">
@@ -167,7 +189,7 @@ const Services = () => {
       {/* Services Detail Section */}
       <section className="py-24 bg-background">
         <div className="container px-4 sm:px-6 lg:px-8">
-          <div className="space-y-24">
+          <div className="space-y-16">
             {services.map((service, index) => {
               const Icon = service.icon;
               const isEven = index % 2 === 0;
@@ -175,47 +197,84 @@ const Services = () => {
               return (
                 <div
                   key={service.title}
-                  className={`grid lg:grid-cols-2 gap-12 items-center ${
-                    !isEven ? "lg:flex-row-reverse" : ""
-                  }`}
+                  className="relative rounded-3xl overflow-hidden shadow-2xl group hover:shadow-3xl transition-all duration-500 min-h-[600px] lg:min-h-[500px]"
+                  style={{
+                    backgroundImage: `url(${service.image})`,
+                    backgroundSize: "cover",
+                    backgroundPosition: "top",
+                    backgroundRepeat: "no-repeat",
+                  }}
                 >
-                  <div className={`${!isEven ? "lg:order-2" : ""}`}>
-                    <div
-                      className={`w-20 h-20 rounded-2xl bg-gradient-to-br ${service.color} p-5 mb-6`}
-                    >
-                      <Icon className="w-full h-full text-white" />
+                  {/* Gradient Overlay for better text readability */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-foreground/80 via-foreground/70 to-foreground/80 group-hover:from-foreground/75 group-hover:via-foreground/65 group-hover:to-foreground/75 transition-all duration-500" />
+                  
+                  {/* Additional overlay for better contrast */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 via-transparent to-transparent" />
+                  
+                  {/* Subtle pattern overlay for texture */}
+                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,rgba(255,255,255,0.03)_1px,transparent_0)] opacity-30" />
+                  
+                  {/* Content */}
+                  <div className="relative z-10 h-full flex flex-col p-8 md:p-12 lg:p-16">
+                    <div className="flex-1 flex flex-col justify-between">
+                      {/* Top Section: Icon and Title */}
+                      <div>
+                        <div className="flex items-center gap-4 mb-6">
+                          <div
+                            className={`w-16 h-16 rounded-xl bg-gradient-to-br ${service.color} p-4 shadow-lg flex-shrink-0`}
+                          >
+                            <Icon className="w-full h-full text-white" />
+                          </div>
+                          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white">
+                            {service.title}
+                          </h2>
+                        </div>
+                        
+                        <p className="text-lg md:text-xl text-white/90 mb-8 leading-relaxed max-w-2xl">
+                          {service.fullDesc}
+                        </p>
+                      </div>
+
+                      {/* Bottom Section: Features and CTA */}
+                      <div className="grid lg:grid-cols-2 gap-8 items-end mt-8">
+                        {/* Features List */}
+                        <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 md:p-8 border border-white/20 shadow-xl">
+                          <h3 className="text-xl font-semibold text-white mb-5 flex items-center gap-2">
+                            <CheckCircle2 className="w-6 h-6 text-accent" />
+                            Key Features
+                          </h3>
+                          <div className="grid sm:grid-cols-2 gap-3">
+                            {service.features.map((feature) => (
+                              <div
+                                key={feature}
+                                className="flex items-start gap-2.5 text-white/90 text-sm"
+                              >
+                                <CheckCircle2 className="w-4 h-4 text-accent flex-shrink-0 mt-1" />
+                                <span>{feature}</span>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+
+                        {/* CTA Button */}
+                        <div className="flex flex-col gap-4 lg:items-end">
+                          <Button
+                            size="lg"
+                            className="bg-white text-primary hover:bg-white/90 shadow-xl text-lg px-8 py-6 group/btn w-full lg:w-auto"
+                          >
+                            Request This Service
+                            <ArrowRight className="ml-2 group-hover/btn:translate-x-1 transition-transform" />
+                          </Button>
+                          <p className="text-white/80 text-sm text-center lg:text-right">
+                            Available 24/7 for immediate placement
+                          </p>
+                        </div>
+                      </div>
                     </div>
-                    <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-                      {service.title}
-                    </h2>
-                    <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-                      {service.fullDesc}
-                    </p>
-                    <Button className="bg-gradient-primary text-white group">
-                      Request This Service
-                      <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
-                    </Button>
                   </div>
 
-                  <Card
-                    className={`p-8 shadow-smooth-lg border-border/50 ${
-                      !isEven ? "lg:order-1" : ""
-                    }`}
-                  >
-                    <h3 className="text-xl font-semibold text-foreground mb-6">
-                      Key Features:
-                    </h3>
-                    <ul className="space-y-4">
-                      {service.features.map((feature) => (
-                        <li key={feature} className="flex items-start gap-3">
-                          <CheckCircle2 className="w-6 h-6 text-accent flex-shrink-0 mt-0.5" />
-                          <span className="text-muted-foreground">
-                            {feature}
-                          </span>
-                        </li>
-                      ))}
-                    </ul>
-                  </Card>
+                  {/* Hover effect overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-primary/0 to-accent/0 group-hover:from-primary/10 group-hover:to-accent/10 transition-all duration-500 pointer-events-none" />
                 </div>
               );
             })}

@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Phone, Mail, MapPin, Clock, Send } from "lucide-react";
-import { CONTACT_NUMBER, CONTACT_EMAIL } from "@/lib/constants";
+import { CONTACT_NUMBER, CONTACT_EMAIL, ADDRESS } from "@/lib/constants";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 
@@ -28,8 +28,8 @@ const contactMethods = [
   {
     icon: MapPin,
     title: "Address",
-    details: "123 Healthcare Street",
-    subtext: "London, UK, EC1A 1BB",
+    details: ADDRESS,
+    subtext: "",
     color: "from-accent to-secondary",
   },
   {
@@ -215,6 +215,8 @@ const Contact = () => {
                     <option value="healthcare-assistants">
                       Healthcare Assistants
                     </option>
+                    <option value="senior-healthcare-assistants">Senior Healthcare Assistants
+                    </option>
                     <option value="support-workers">Support Workers</option>
                     <option value="emergency-cover">
                       24/7 Emergency Cover
@@ -263,25 +265,11 @@ const Contact = () => {
                 <div className="space-y-4 text-muted-foreground">
                   <div>
                     <p className="font-semibold text-foreground">
-                      London Office (Head Office)
+                      Office Address
                     </p>
                     <p className="text-sm">
-                      123 Healthcare Street, London, EC1A 1BB
+                      {ADDRESS}
                     </p>
-                  </div>
-                  <div>
-                    <p className="font-semibold text-foreground">
-                      Manchester Office
-                    </p>
-                    <p className="text-sm">
-                      45 Medical Avenue, Manchester, M1 1AA
-                    </p>
-                  </div>
-                  <div>
-                    <p className="font-semibold text-foreground">
-                      Birmingham Office
-                    </p>
-                    <p className="text-sm">78 Care Road, Birmingham, B1 1BB</p>
                   </div>
                 </div>
               </Card>

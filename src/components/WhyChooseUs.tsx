@@ -1,3 +1,4 @@
+import { ESTABLISHED_IN } from "@/lib/constants";
 import { UserCheck, Clock, Smile, PoundSterling } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import type { ComponentType, SVGProps } from "react";
@@ -75,7 +76,7 @@ export const WhyChooseUs = () => {
               Your Trusted Partner in Healthcare Staffing
             </h2>
             <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
-              Established in 2021, Care Apex has built a focused team delivering
+              Established in {ESTABLISHED_IN}, Care Apex has built a focused team delivering
               professional staffing solutions to local healthcare providers. We
               prioritise safe, reliable placements and clear communication at
               every step.

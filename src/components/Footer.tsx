@@ -1,7 +1,7 @@
 import { Heart, Mail, MapPin, Phone } from "lucide-react";
 import { Link } from "react-router-dom";
 import Logo from "./ui/logo";
-import { CONTACT_NUMBER, CONTACT_EMAIL } from "@/lib/constants";
+import { CONTACT_NUMBER, CONTACT_EMAIL, ADDRESS, ESTABLISHED_IN } from "@/lib/constants";
 
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -20,7 +20,7 @@ export const Footer = () => {
             </Link> */}
             <Logo className="mb-4" />
             <p className="text-white/70 mb-6">
-              Established in 2021, Care Apex provides focused healthcare
+              Established in {ESTABLISHED_IN}, Care Apex provides focused healthcare
               staffing solutions that connect qualified professionals with local
               healthcare providers across the UK.
             </p>
@@ -71,6 +71,7 @@ export const Footer = () => {
             <ul className="space-y-3">
               <li className="text-white/70">Registered Nurses</li>
               <li className="text-white/70">Healthcare Assistants</li>
+              <li className="text-white/70">Senior Healthcare Assistants</li>
               <li className="text-white/70">Support Workers</li>
               <li className="text-white/70">Emergency Cover</li>
             </ul>
@@ -98,7 +99,7 @@ export const Footer = () => {
                 <MapPin className="w-5 h-5 text-primary flex-shrink-0 mt-1" />
                 <div>
                   <div className="text-white/70 text-sm">Address</div>
-                  <div className="font-medium">London, United Kingdom</div>
+                  <div className="font-medium">{ADDRESS}</div>
                 </div>
               </li>
             </ul>
