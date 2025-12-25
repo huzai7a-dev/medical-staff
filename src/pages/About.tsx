@@ -239,7 +239,7 @@ const About = () => {
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link to="/contact">
-                <Button size="lg" className="bg-white text-primary px-8">
+                <Button size="lg" className="bg-white text-primary px-8 hover:text-white">
                   Contact Us
                 </Button>
               </Link>

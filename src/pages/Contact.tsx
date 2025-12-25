@@ -135,14 +135,14 @@ const Contact = () => {
             })}
           </div>
 
-          {/* Contact Form and Map */}
-          <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+          {/* Contact Form */}
+          <div className="max-w-3xl mx-auto">
             {/* Form */}
             <Card className="p-8 md:p-10 shadow-smooth-lg border-border/50">
-              <h2 className="text-3xl font-bold text-foreground mb-2">
+              <h2 className="text-3xl font-bold text-foreground mb-2 text-center">
                 Send Us a Message
               </h2>
-              <p className="text-muted-foreground mb-8">
+              <p className="text-muted-foreground mb-8 text-center">
                 Fill out the form below and we'll get back to you as soon as
                 possible.
               </p>
@@ -251,29 +251,6 @@ const Contact = () => {
                 </Button>
               </form>
             </Card>
-
-            {/* Additional Info: keep only Office Locations */}
-            <div className="space-y-8">
-              <Card className="p-8 shadow-smooth-lg bg-gradient-subtle border-border/50">
-                <h3 className="text-2xl font-bold text-foreground mb-4">
-                  Office Locations
-                </h3>
-                <p className="text-muted-foreground mb-4 leading-relaxed">
-                  We operate regional offices to provide local support and fast
-                  response for our partner facilities.
-                </p>
-                <div className="space-y-4 text-muted-foreground">
-                  <div>
-                    <p className="font-semibold text-foreground">
-                      Office Address
-                    </p>
-                    <p className="text-sm">
-                      {ADDRESS}
-                    </p>
-                  </div>
-                </div>
-              </Card>
-            </div>
           </div>
         </div>
       </section>
