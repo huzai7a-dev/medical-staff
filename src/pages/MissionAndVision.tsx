@@ -30,7 +30,7 @@ const coreValues = [
     icon: Shield,
     title: "Total Trust",
     description:
-      "We operate with 100% transparency. Facilities and clinicians know they can rely on our word.",
+      "We operate with 100% transparency. Facilities and healthcare professionals know they can rely on our word.",
   },
   {
     icon: Sparkles,
@@ -54,7 +54,7 @@ const coreValues = [
     icon: Target,
     title: "Right Match, First Time",
     description:
-      "Our precision screening ensures clinicians fit your facility’s culture and clinical needs perfectly.",
+      "Our precision screening ensures healthcare professionals fit your facility’s culture and clinical needs perfectly.",
   },
 ];
 
@@ -91,7 +91,7 @@ const MissionAndVision = () => {
             </h1>
             <p className="text-xl md:text-2xl text-white/90 leading-relaxed font-light">
               Simplifying healthcare staffing by connecting world-class
-              clinicians with the facilities that need them most.
+              healthcare professionals with the facilities that need them most.
             </p>
           </div>
         </div>
@@ -147,7 +147,7 @@ const MissionAndVision = () => {
               </h2>
               <p className="text-lg text-slate-600 mb-8 leading-relaxed">
                 We are building a future where healthcare facilities are never
-                understaffed and clinicians always have access to rewarding
+                understaffed and healthcare professionals always have access to rewarding
                 opportunities. We aim to be the UK’s most trusted partner in
                 healthcare resilience.
               </p>

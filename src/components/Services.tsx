@@ -2,6 +2,15 @@ import { Card } from "@/components/ui/card";
 import { Stethoscope, Users, Heart, Clock, Shield, Award } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
+// Service Background Images
+import healthcareAssistantsImg from "@/assets/services/healthcare-assistants.jpg";
+import seniorHealthcareAssistantImg from "@/assets/services/senior-healthcare-assistant.jpg";
+import supportWorkerImg from "@/assets/services/support-worker.jpg";
+import nursesImg from "@/assets/services/nurses.jpg";
+import emergencyImg from "@/assets/services/emergency.jpg";
+import hourlyCareImg from "@/assets/services/hourly-care.jpg";
+import specializedImg from "@/assets/services/specialized.jpg";
+
 const services = [
   {
     icon: Heart,
@@ -9,6 +18,7 @@ const services = [
     description:
       "Compassionate, trained assistants experienced in hospital and care-home environments, available for short and long shifts.",
     color: "from-secondary to-primary",
+    image: healthcareAssistantsImg,
   },
   {
     icon: Heart,
@@ -16,6 +26,7 @@ const services = [
     description:
       "Senior assistants with supervisory experience who support complex care needs and help maintain clinical standards.",
     color: "from-primary to-accent",
+    image: seniorHealthcareAssistantImg,
   },
   {
     icon: Users,
@@ -23,6 +34,7 @@ const services = [
     description:
       "Person-centred support workers for daily-living assistance, rehabilitation support and community-based care.",
     color: "from-accent to-secondary",
+    image: supportWorkerImg,
   },
   {
     icon: Stethoscope,
@@ -30,6 +42,7 @@ const services = [
     description:
       "Nurses with current professional registration and clinical experience across acute, community and long-term care settings.",
     color: "from-primary to-primary-light",
+    image: nursesImg,
   },
 
   {
@@ -38,6 +51,7 @@ const services = [
     description:
       "Rapid-response cover for urgent staffing gaps — available around the clock to protect continuity of care.",
     color: "from-primary-dark to-accent",
+    image: emergencyImg,
   },
   {
     icon: Shield,
@@ -45,6 +59,7 @@ const services = [
     description:
       "Flexible options including short-term cover, temp-to-perm and permanent recruitment to suit operational needs.",
     color: "from-secondary to-primary-dark",
+    image: hourlyCareImg,
   },
   {
     icon: Award,
@@ -52,6 +67,7 @@ const services = [
     description:
       "Specialist staff for dementia, palliative and mental-health support, matched to your service and clinical governance needs.",
     color: "from-accent to-primary",
+    image: specializedImg,
   },
 ];
 
@@ -112,26 +128,39 @@ export const Services = () => {
               <Card
                 key={service.title}
                 data-card-index={index}
-                className={`p-8 hover:shadow-smooth-lg transition-all duration-500 border-border/50 hover:border-primary/30 hover:-translate-y-2 group ${
-                  isVisible
-                    ? "opacity-100 translate-y-0"
-                    : "opacity-0 translate-y-10"
-                }`}
+                className={`relative min-h-[450px] flex flex-col justify-end p-8 overflow-hidden hover:shadow-2xl transition-all duration-500 border-border/50 hover:border-primary/30 hover:-translate-y-2 group ${isVisible
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-10"
+                  }`}
                 style={{
                   transition: "all 0.6s cubic-bezier(0.4, 0, 0.2, 1)",
                 }}
               >
-                <div
-                  className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${service.color} p-4 mb-6 group-hover:scale-110 transition-transform duration-300`}
-                >
-                  <Icon className="w-full h-full text-white" />
+                {/* Background Image with Dark Overlay */}
+                <div className="absolute inset-0 z-0">
+                  <img
+                    src={service.image}
+                    alt={service.title}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 transform-gpu"
+                    style={{ backfaceVisibility: "hidden" }}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-black/10 group-hover:via-black/60 transition-colors duration-500" />
                 </div>
-                <h3 className="text-2xl font-bold mb-4 text-foreground">
-                  {service.title}
-                </h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  {service.description}
-                </p>
+
+                {/* Content */}
+                <div className="relative z-10">
+                  <div
+                    className="w-14 h-14 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 p-3.5 mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-xl"
+                  >
+                    <Icon className="w-full h-full text-white" />
+                  </div>
+                  <h3 className="text-2xl font-bold mb-4 text-white group-hover:text-primary-light transition-colors duration-300 drop-shadow-md">
+                    {service.title}
+                  </h3>
+                  <p className="text-white/80 leading-relaxed group-hover:text-white transition-colors duration-300 drop-shadow-sm">
+                    {service.description}
+                  </p>
+                </div>
               </Card>
             );
           })}

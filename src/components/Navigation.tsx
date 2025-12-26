@@ -5,17 +5,36 @@ import { Link, useLocation } from "react-router-dom";
 import Logo from "./ui/logo";
 
 export const Navigation = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
+  // const [isScrolled, setIsScrolled] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      const currentScrollY = window.scrollY;
+
+      // Update isScrolled for background visibility
+      // setIsScrolled(currentScrollY > 50);
+
+      // Handle reveal effect
+      if (currentScrollY < 10) {
+        setIsVisible(true);
+      } else if (currentScrollY > lastScrollY && currentScrollY > 80) {
+        // Scrolling down and passed threshold
+        setIsVisible(false);
+      } else if (currentScrollY < lastScrollY) {
+        // Scrolling up
+        setIsVisible(true);
+      }
+
+      setLastScrollY(currentScrollY);
     };
+
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [lastScrollY]);
 
   const navItems = [
     { name: "Home", path: "/" },
@@ -23,14 +42,14 @@ export const Navigation = () => {
     { name: "About", path: "/about" },
     { name: "Mission & Vision", path: "/mission-and-vision" },
     { name: "Careers", path: "/careers" },
-    // { name: "Contact", path: "/contact" },
   ];
 
   const isActive = (path: string) => location.pathname === path;
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white/95 backdrop-blur-lg shadow-smooth`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white/95 backdrop-blur-lg shadow-smooth ${isVisible ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0"
+        }`}
     >
       <div className="container px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
@@ -44,8 +63,8 @@ export const Navigation = () => {
                 key={item.name}
                 to={item.path}
                 className={`font-medium transition-colors hover:text-primary  ${!isActive(item.path)
-                    ? "text-primary"
-                    : "text-black"
+                  ? "text-primary"
+                  : "text-black"
                   }`}
               >
                 {item.name}
@@ -78,8 +97,8 @@ export const Navigation = () => {
                   key={item.name}
                   to={item.path}
                   className={`px-4 py-2 font-medium ${isActive(item.path)
-                      ? "text-primary"
-                      : "text-foreground hover:text-primary"
+                    ? "text-primary"
+                    : "text-foreground hover:text-primary"
                     }`}
                   onClick={() => setIsMobileMenuOpen(false)}
                 >

@@ -24,6 +24,7 @@ import specializedCareImg from "@/assets/services/specialized.jpg";
 
 const services = [
   {
+    id: "healthcare-assistants",
     icon: Heart,
     title: "Healthcare Assistants",
     image: healthcareAssistantsImg,
@@ -42,6 +43,7 @@ const services = [
     color: "from-secondary to-primary",
   },
   {
+    id: "senior-healthcare-assistants",
     icon: Heart,
     title: "Senior Healthcare Assistants",
     image: seniorHealthcareAssistantImg,
@@ -60,6 +62,7 @@ const services = [
     color: "from-primary to-accent",
   },
   {
+    id: "support-workers",
     icon: Users,
     title: "Support Workers",
     image: supportWorkersImg,
@@ -78,6 +81,7 @@ const services = [
     color: "from-accent to-secondary",
   },
   {
+    id: "registered-nurses",
     icon: Stethoscope,
     title: "Registered Nurses",
     image: registeredNursesImg,
@@ -96,6 +100,7 @@ const services = [
     color: "from-primary to-primary-light",
   },
   {
+    id: "emergency-cover",
     icon: Clock,
     title: "24/7 Emergency Cover",
     image: emergencyCoverImage,
@@ -114,6 +119,7 @@ const services = [
     color: "from-primary-dark to-accent",
   },
   {
+    id: "temporary-permanent",
     icon: Shield,
     title: "Temporary & Permanent",
     image: hourlyHomeCareImg,
@@ -132,6 +138,7 @@ const services = [
     color: "from-secondary to-primary-dark",
   },
   {
+    id: "specialized-care",
     icon: Award,
     title: "Specialized Care",
     image: specializedCareImg,
@@ -197,6 +204,7 @@ const Services = () => {
               return (
                 <div
                   key={service.title}
+                  id={service.id}
                   className="relative rounded-3xl overflow-hidden shadow-2xl group hover:shadow-3xl transition-all duration-500 min-h-[600px] lg:min-h-[500px]"
                   style={{
                     backgroundImage: `url(${service.image})`,
@@ -207,13 +215,13 @@ const Services = () => {
                 >
                   {/* Gradient Overlay for better text readability */}
                   <div className="absolute inset-0 bg-gradient-to-br from-foreground/80 via-foreground/70 to-foreground/80 group-hover:from-foreground/75 group-hover:via-foreground/65 group-hover:to-foreground/75 transition-all duration-500" />
-                  
+
                   {/* Additional overlay for better contrast */}
                   <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 via-transparent to-transparent" />
-                  
+
                   {/* Subtle pattern overlay for texture */}
                   <div className="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,rgba(255,255,255,0.03)_1px,transparent_0)] opacity-30" />
-                  
+
                   {/* Content */}
                   <div className="relative z-10 h-full flex flex-col p-8 md:p-12 lg:p-16">
                     <div className="flex-1 flex flex-col justify-between">
@@ -229,7 +237,7 @@ const Services = () => {
                             {service.title}
                           </h2>
                         </div>
-                        
+
                         <p className="text-lg md:text-xl text-white/90 mb-8 leading-relaxed max-w-2xl">
                           {service.fullDesc}
                         </p>

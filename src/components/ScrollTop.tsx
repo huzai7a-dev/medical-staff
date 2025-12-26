@@ -4,20 +4,24 @@ import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
 const ScrollToTop = () => {
-  const { pathname } = useLocation();
+  const { pathname, hash } = useLocation();
 
   useEffect(() => {
-    // This scrolls the window to the top-left corner (0, 0)
-    window.scrollTo({
-      top: 0,
-      left: 0,
-      behavior: "smooth", // ✨ This creates the smooth transition effect!
-    });
+    if (hash) {
+      const id = hash.replace("#", "");
+      const element = document.getElementById(id);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    } else {
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: "smooth",
+      });
+    }
+  }, [pathname, hash]);
 
-    // The effect runs every time the pathname (route) changes
-  }, [pathname]);
-
-  // This component doesn't render anything visually
   return null;
 };
 

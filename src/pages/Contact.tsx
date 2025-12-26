@@ -9,6 +9,7 @@ import { Phone, Mail, MapPin, Clock, Send } from "lucide-react";
 import { CONTACT_NUMBER, CONTACT_EMAIL, ADDRESS } from "@/lib/constants";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
+import { sendToWhatsApp, submitForm } from "@/lib/submitForm";
 
 const contactMethods = [
   {
@@ -43,6 +44,7 @@ const contactMethods = [
 
 const Contact = () => {
   const { toast } = useToast();
+  const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -52,21 +54,51 @@ const Contact = () => {
     message: "",
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const validateForm = () => {
+    if (!formData.name || !formData.email || !formData.phone || !formData.organization || !formData.service || !formData.message) {
+      toast({
+        title: "Error!",
+        description: "Please fill out all fields.",
+        variant: "destructive",
+      });
+      return false;
+    }
+    return true;
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    toast({
-      title: "Message Sent!",
-      description:
-        "Thank you for contacting us. We'll get back to you within 2 hours.",
-    });
-    setFormData({
-      name: "",
-      email: "",
-      phone: "",
-      organization: "",
-      service: "",
-      message: "",
-    });
+    setLoading(true);
+    if (!validateForm()) {
+      setLoading(false);
+      return;
+    }
+    try {
+      await submitForm(formData);
+      sendToWhatsApp(formData);
+      toast({
+        title: "Message Sent!",
+        description:
+          "Thank you for contacting us. We'll get back to you within 2 hours.",
+      });
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        organization: "",
+        service: "",
+        message: "",
+      });
+    } catch (error) {
+      console.log(error);
+      toast({
+        title: "Error!",
+        description: "Something went wrong. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleChange = (
@@ -211,20 +243,20 @@ const Contact = () => {
                     className="mt-2 w-full h-10 rounded-md border border-input bg-background px-3 py-2 text-sm"
                   >
                     <option value="">Select a service</option>
-                    <option value="registered-nurses">Registered Nurses</option>
-                    <option value="healthcare-assistants">
+                    <option value="Registered Nurses">Registered Nurses</option>
+                    <option value="Healthcare Assistants">
                       Healthcare Assistants
                     </option>
-                    <option value="senior-healthcare-assistants">Senior Healthcare Assistants
+                    <option value="Senior Healthcare Assistants">Senior Healthcare Assistants
                     </option>
-                    <option value="support-workers">Support Workers</option>
-                    <option value="emergency-cover">
+                    <option value="Support Workers">Support Workers</option>
+                    <option value="Emergency Cover">
                       24/7 Emergency Cover
                     </option>
-                    <option value="temporary-permanent">
+                    <option value="Temporary & Permanent">
                       Temporary & Permanent
                     </option>
-                    <option value="specialized-care">Specialized Care</option>
+                    <option value="Specialized Care">Specialized Care</option>
                   </select>
                 </div>
 
@@ -244,6 +276,7 @@ const Contact = () => {
                 <Button
                   type="submit"
                   size="lg"
+                  disabled={loading}
                   className="w-full bg-gradient-primary text-white group"
                 >
                   Send Message
