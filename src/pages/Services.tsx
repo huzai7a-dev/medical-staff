@@ -25,6 +25,7 @@ import specializedCareImg from "@/assets/services/specialized.jpg";
 const services = [
   {
     id: "healthcare-assistants",
+    value: "Healthcare Assistants",
     icon: Heart,
     title: "Healthcare Assistants",
     image: healthcareAssistantsImg,
@@ -44,6 +45,7 @@ const services = [
   },
   {
     id: "senior-healthcare-assistants",
+    value: "Senior Healthcare Assistants",
     icon: Heart,
     title: "Senior Healthcare Assistants",
     image: seniorHealthcareAssistantImg,
@@ -63,6 +65,7 @@ const services = [
   },
   {
     id: "support-workers",
+    value: "Support Workers",
     icon: Users,
     title: "Support Workers",
     image: supportWorkersImg,
@@ -82,6 +85,7 @@ const services = [
   },
   {
     id: "registered-nurses",
+    value: "Registered Nurses",
     icon: Stethoscope,
     title: "Registered Nurses",
     image: registeredNursesImg,
@@ -101,6 +105,7 @@ const services = [
   },
   {
     id: "emergency-cover",
+    value: "Emergency Cover",
     icon: Clock,
     title: "24/7 Emergency Cover",
     image: emergencyCoverImage,
@@ -120,6 +125,7 @@ const services = [
   },
   {
     id: "temporary-permanent",
+    value: "Temporary and Permanent",
     icon: Shield,
     title: "Temporary & Permanent",
     image: hourlyHomeCareImg,
@@ -139,6 +145,7 @@ const services = [
   },
   {
     id: "specialized-care",
+    value: "Specialized Care",
     icon: Award,
     title: "Specialized Care",
     image: specializedCareImg,
@@ -270,7 +277,9 @@ const Services = () => {
                             size="lg"
                             className="bg-white text-primary hover:bg-white/90 shadow-xl text-lg px-8 py-6 group/btn w-full lg:w-auto"
                           >
-                            Request This Service
+                            <Link to={`/contact?service=${service.value}#contact-form`}>
+                              Request This Service
+                            </Link>
                             <ArrowRight className="ml-2 group-hover/btn:translate-x-1 transition-transform" />
                           </Button>
                           <p className="text-white/80 text-sm text-center lg:text-right">

@@ -10,6 +10,7 @@ import { CONTACT_NUMBER, CONTACT_EMAIL, ADDRESS } from "@/lib/constants";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { sendToWhatsApp, submitForm } from "@/lib/submitForm";
+import { useSearchParams } from "react-router-dom";
 
 const contactMethods = [
   {
@@ -45,15 +46,18 @@ const contactMethods = [
 const Contact = () => {
   const { toast } = useToast();
   const [loading, setLoading] = useState(false);
+  const [params] = useSearchParams();
+  const selectedService = params.get('service');
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     phone: "",
     organization: "",
-    service: "",
+    service: selectedService || "",
     message: "",
   });
 
+  console.log(selectedService, 'selectedService')
   const validateForm = () => {
     if (!formData.name || !formData.email || !formData.phone || !formData.organization || !formData.service || !formData.message) {
       toast({
@@ -168,7 +172,7 @@ const Contact = () => {
           </div>
 
           {/* Contact Form */}
-          <div className="max-w-3xl mx-auto">
+          <div id="contact-form" className="max-w-3xl mx-auto">
             {/* Form */}
             <Card className="p-8 md:p-10 shadow-smooth-lg border-border/50">
               <h2 className="text-3xl font-bold text-foreground mb-2 text-center">
@@ -253,7 +257,7 @@ const Contact = () => {
                     <option value="Emergency Cover">
                       24/7 Emergency Cover
                     </option>
-                    <option value="Temporary & Permanent">
+                    <option value="Temporary and Permanent">
                       Temporary & Permanent
                     </option>
                     <option value="Specialized Care">Specialized Care</option>
