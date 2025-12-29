@@ -16,7 +16,7 @@ export const CTA = () => {
             Ready to simplify your staffing?
           </h2>
           <p className="text-xl text-white/90 mb-12 leading-relaxed">
-            Care Apex supports over 45 partner facilities with 320+ successful
+            Care Apex supports over 10+ partner facilities with 320+ successful
             placements. Contact us to discuss a practical plan for your team.
           </p>
 

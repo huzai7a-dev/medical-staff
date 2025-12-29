@@ -14,7 +14,7 @@ import {
 import { Link } from "react-router-dom";
 import { CONTACT_NUMBER } from "@/lib/constants";
 import servicesBg from "@/assets/services/services-bg.jpg";
-import healthcareAssistantsImg from "@/assets/services/healthcare-assistants.jpg";
+import healthcareAssistantsImg from "@/assets/services/healthcare-assistant.jpg";
 import seniorHealthcareAssistantImg from "@/assets/services/senior-healthcare-assistant.jpg";
 import supportWorkersImg from "@/assets/services/support-worker.jpg";
 import registeredNursesImg from "@/assets/services/nurses.jpg";

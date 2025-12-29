@@ -88,7 +88,7 @@ export const WhyChooseUs = () => {
               </div>
               <div className="h-16 w-px bg-white/30" />
               <div className="text-white w-full text-center">
-                <div className="text-4xl font-bold mb-1">45+</div>
+                <div className="text-4xl font-bold mb-1">10+</div>
                 <div className="text-white/90">Partner Facilities</div>
               </div>
             </div>

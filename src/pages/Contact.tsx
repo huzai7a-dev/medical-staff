@@ -24,7 +24,7 @@ const contactMethods = [
     icon: Mail,
     title: "Email",
     details: CONTACT_EMAIL,
-    subtext: "We respond within 2 hours",
+    subtext: "We respond within 1 hour",
     color: "from-secondary to-primary",
   },
   {

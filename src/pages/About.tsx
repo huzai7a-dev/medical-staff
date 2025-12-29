@@ -44,9 +44,9 @@ const values = [
 ];
 
 const stats = [
-  { number: "4+", label: "Years Experience" },
+  { number: "1", label: "Year of Experience" },
   { number: "120+", label: "Healthcare Professionals" },
-  { number: "45+", label: "Partner Facilities" },
+  { number: "10+", label: "Partner Facilities" },
   { number: "320+", label: "Successful Placements" },
   { number: "4.7/5", label: "Average Client Rating" },
   { number: "24/7", label: "Support Available" },
@@ -87,7 +87,7 @@ const About = () => {
               Professional, Responsive Healthcare Staffing
             </h1>
             <p className="text-xl text-white/90 leading-relaxed">
-              Founded in 2021, Care Apex delivers dependable staffing solutions
+              Founded in {ESTABLISHED_IN}, Care Apex delivers dependable staffing solutions
               to hospitals, care homes and community providers — focusing on
               safety, clarity and fast response for organisations of all sizes.
             </p>

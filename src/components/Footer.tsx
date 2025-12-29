@@ -128,8 +128,7 @@ export const Footer = () => {
 
         <div className="pt-8 border-t border-white/10 text-center text-white/60 text-sm">
           <p>
-            &copy; {currentYear} Care Apex. All rights reserved. | Professional
-            Healthcare Staffing Solutions
+            &copy; {currentYear} Care Apex. All rights reserved.
           </p>
         </div>
       </div>
