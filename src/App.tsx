@@ -11,6 +11,7 @@ import MissionAndVision from "./pages/MissionAndVision";
 import Careers from "./pages/Careers";
 import NotFound from "./pages/NotFound";
 import ScrollToTop from "./components/ScrollTop";
+import Whatsapp from "./components/Whatsapp";
 
 const queryClient = new QueryClient();
 
@@ -31,6 +32,7 @@ const App = () => (
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
+      <Whatsapp/>
     </TooltipProvider>
   </QueryClientProvider>
 );

@@ -57,7 +57,6 @@ const Contact = () => {
     message: "",
   });
 
-  console.log(selectedService, 'selectedService')
   const validateForm = () => {
     if (!formData.name || !formData.email || !formData.phone || !formData.organization || !formData.service || !formData.message) {
       toast({
@@ -79,11 +78,11 @@ const Contact = () => {
     }
     try {
       await submitForm(formData);
-      sendToWhatsApp(formData);
+      // sendToWhatsApp(formData);
       toast({
         title: "Message Sent!",
         description:
-          "Thank you for contacting us. We'll get back to you within 2 hours.",
+          "Thank you for contacting us. We'll get back to you.",
       });
       setFormData({
         name: "",
